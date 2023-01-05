@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
+from typing import Union
+
 from fastapi import FastAPI
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
+class Item(BaseModel):
+    name: str
+    description: Union[str, None] = None
+    price: float
+    tax: Union[float, None] = None
         
 app = FastAPI()
 
@@ -14,9 +22,9 @@ app.add_middleware(
 )
 
 
-@app.get('/api/hello')
-async def hello():
-    return {'message': 'Hello world!!'}
+@app.post("/items/")
+async def create_item(item: Item):
+    return item
 
 @app.get("/")
 async def main():
