@@ -11,6 +11,14 @@ class Item(BaseModel):
         
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_methods=['*'],
+    allow_headers=['*'],
+    allow_credentials=True,
+    allow_origins=['*'],
+)
+
 
 @app.get('/api/hello')
 async def hello():
