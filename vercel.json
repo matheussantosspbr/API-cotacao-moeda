@@ -2,5 +2,5 @@
   "routes": [
       { "src": "/", "dest": "api/index.py" },
       { "src": "/docs", "dest": "api/index.py" },
-      { "src": "/api/(.*)", "dest": "api/index.py" }]
+      { "src": "/items", "dest": "api/index.py" }]
 }
