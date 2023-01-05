@@ -7,9 +7,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 class Item(BaseModel):
     name: str
-    description: str | None = None
+    description: Union[str, None] = None
     price: float
-    tax: float | None = None
+    tax: Union[float, None] = None
         
 app = FastAPI()
 
