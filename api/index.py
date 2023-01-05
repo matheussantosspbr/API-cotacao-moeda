@@ -16,6 +16,12 @@ app = FastAPI(
 async def hello():
     return {'message': 'Hello world!!'}
 
-@app.get('/')
-async def hello():
-    return {'message': 'Hello world!'}
+@app.get("/")
+async def main():
+    return {
+        "name": "matheus",
+        "idade": 18,
+        "sexo": "M",
+        "cidade": "Mauá",
+
+    }
