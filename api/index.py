@@ -22,7 +22,7 @@ app.add_middleware(
 )
 
 
-@app.post("/items/")
+@app.post("/items")
 async def create_item(item: Item):
     return item
 
