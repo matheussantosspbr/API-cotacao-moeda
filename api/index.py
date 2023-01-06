@@ -2,15 +2,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+# from conexao import PegarUltimoValor,EnviarUltimoValor
 from api.conexao import PegarUltimoValor,EnviarUltimoValor
 
-class PropsPrecos(BaseModel):
-    dolarParaReal: float
-    realParaDolar: float
-    euroParaReal: float
-    realParaEuro: float
-    euroParaDolar: float
-    dolarParaEuro: float
+class require(BaseModel):
+    secret_token: str
+    public_token: str
+    precos: dict
     
 app = FastAPI()
 
@@ -24,9 +22,9 @@ app.add_middleware(
     
 
 @app.post("/enviar/preco")
-async def main(precos: PropsPrecos):
-    status = EnviarUltimoValor(precos)
-    return {'status': status}
+async def main(require: require):
+    response = EnviarUltimoValor(require)
+    return {'status': response}
 
 
 
@@ -34,10 +32,10 @@ async def main(precos: PropsPrecos):
 async def home():
     precos = PegarUltimoValor()
     return {
-        "dolarParaReal":precos[0][1] / 10000,
-        "realParaDolar":precos[0][2] / 10000,
-        "euroParaReal":precos[0][3]  / 10000,
-        "realParaEuro":precos[0][4]  / 10000,
-        "euroParaDolar":precos[0][5] / 10000,
-        "dolarParaEuro":precos[0][6] / 10000
+        "dolarParaReal":precos[0][1] / 100000,
+        "realParaDolar":precos[0][2] / 100000,
+        "euroParaReal":precos[0][3]  / 100000,
+        "realParaEuro":precos[0][4]  / 100000,
+        "euroParaDolar":precos[0][5] / 100000,
+        "dolarParaEuro":precos[0][6] / 100000
     }
