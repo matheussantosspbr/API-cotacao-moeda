@@ -2,7 +2,10 @@
 from fastapi import FastAPI
 # from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-import conexao
+from conexao import Conexao
+
+db = Conexao()
+
 
 # class PropsPrecos(BaseModel):
 #     dolarParaReal: float
@@ -32,7 +35,7 @@ app.add_middleware(
 
 @app.get("/")
 async def home():
-    precos = conexao.PegarUltimoValor()
+    precos = db.PegarUltimoValor()
     return {
         "dolarParaReal":precos[0][1] / 10000,
         "realParaDolar":precos[0][2] / 10000,
