@@ -1,3 +1,3 @@
 fastapi
 conexao
-MySQLdb
+mysql.connector

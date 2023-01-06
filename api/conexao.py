@@ -1,8 +1,8 @@
-import MySQLdb
+import mysql.connector
 
 class BancoDeDados:
     def __init__(self):
-        self.con = MySQLdb.connect(host="sql184.main-hosting.eu", user="u115428721_matheusDevTech", password="1010vcvC@!", database="u115428721_DB_matheusTech")
+        self.con = mysql.connector.connect(host="sql184.main-hosting.eu", user="u115428721_matheusDevTech", password="1010vcvC@!", database="u115428721_DB_matheusTech")
         
 
     def PegarUltimoValor(self):
