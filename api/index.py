@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-from typing import Union
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from conexao import PegarUltimoValor, EnviarUltimoValor
 
 class Item(BaseModel):
     name: str
-    description: Union[str, None] = None
-    price: float
-    tax: Union[float, None] = None
-        
+
+    
+class PropsPrecos(BaseModel):
+    dolarParaReal: float
+    realParaDolar: float
+    euroParaReal: float
+    realParaEuro: float
+    euroParaDolar: float
+    dolarParaEuro: float
+    
 app = FastAPI()
 
 app.add_middleware(
@@ -20,18 +25,23 @@ app.add_middleware(
     allow_credentials=True,
     allow_origins=['*'],
 )
+    
+
+@app.post("/enviar/preco")
+async def main(precos: PropsPrecos):
+    status = EnviarUltimoValor(precos)
+    return {'status': status}
 
 
-@app.post("/items")
-async def create_item(item: Item):
-    return item
 
 @app.get("/")
-async def main():
+async def home():
+    precos = PegarUltimoValor()
     return {
-        "name": "matheus",
-        "idade": 18,
-        "sexo": "M",
-        "cidade": "Mauá",
-
+        "dolarParaReal":precos[0][1] / 10000,
+        "realParaDolar":precos[0][2] / 10000,
+        "euroParaReal":precos[0][3]  / 10000,
+        "realParaEuro":precos[0][4]  / 10000,
+        "euroParaDolar":precos[0][5] / 10000,
+        "dolarParaEuro":precos[0][6] / 10000
     }
