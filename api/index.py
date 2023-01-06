@@ -2,10 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from api.conexao import BancoDeDados
-
-db = BancoDeDados()
-
+from conexao import PegarUltimoValor,EnviarUltimoValor
 
 class PropsPrecos(BaseModel):
     dolarParaReal: float
@@ -28,14 +25,14 @@ app.add_middleware(
 
 @app.post("/enviar/preco")
 async def main(precos: PropsPrecos):
-    status = db.EnviarUltimoValor(precos)
+    status = EnviarUltimoValor(precos)
     return {'status': status}
 
 
 
 @app.get("/")
 async def home():
-    precos = db.PegarUltimoValor()
+    precos = PegarUltimoValor()
     return {
         "dolarParaReal":precos[0][1] / 10000,
         "realParaDolar":precos[0][2] / 10000,
