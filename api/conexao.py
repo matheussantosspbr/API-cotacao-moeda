@@ -26,6 +26,8 @@ class BancoDeDados:
         query = """INSERT INTO precos (USD_BRL, BRL_USD, EUR_BRL, BRL_EUR, EUR_USD, USD_EUR) VALUES('%i','%i','%i','%i','%i','%i' )""" % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro)
         res = db.execute(query)
         db.close()
+        con.commit()
+        con.close()
         
         if not res:
             return{
