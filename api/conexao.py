@@ -11,7 +11,7 @@ class BancoDeDados:
         db.execute("SELECT * FROM precos ORDER BY created_date DESC LIMIT 1")
         return db.fetchall()
 
-    def EnviarUltimoValor(precos,self):
+    def EnviarUltimoValor(self,precos):
         con = self.con
         db=con.cursor()
         dolarParaReal = precos.dolarParaReal * 10000
