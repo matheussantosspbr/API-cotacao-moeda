@@ -24,11 +24,18 @@ class BancoDeDados:
         dolarParaEuro = precos.dolarParaEuro * 10000
 
         query = """INSERT INTO precos (USD_BRL, BRL_USD, EUR_BRL, BRL_EUR, EUR_USD, USD_EUR) VALUES('%i','%i','%i','%i','%i','%i' )""" % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro)
-        db.execute(query)
-        res = db.fetchall()
+        res = db.execute(query)
         db.close()
-        return{
-                'status': 201,
-                'message':'Valor criado com sucesso',
+        
+        if not res:
+            return{
+                    'status': 201,
+                    'message':'Valor criado com sucesso',
+                    "result":res
+                }
+        else:
+            return {
+                'status': 400,
+                'message': "Erro ao tentar enviar um valor",
                 "result":res
             }
