@@ -2,9 +2,9 @@
 from fastapi import FastAPI
 # from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from conexao import Conexao as Conexao
+from conexao import BancoDeDados
 
-db = Conexao()
+db = BancoDeDados()
 
 
 # class PropsPrecos(BaseModel):
