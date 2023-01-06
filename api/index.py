@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 from fastapi import FastAPI
-# from pydantic import BaseModel
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from api.conexao import BancoDeDados
 
 db = BancoDeDados()
 
 
-# class PropsPrecos(BaseModel):
-#     dolarParaReal: float
-#     realParaDolar: float
-#     euroParaReal: float
-#     realParaEuro: float
-#     euroParaDolar: float
-#     dolarParaEuro: float
+class PropsPrecos(BaseModel):
+    dolarParaReal: float
+    realParaDolar: float
+    euroParaReal: float
+    realParaEuro: float
+    euroParaDolar: float
+    dolarParaEuro: float
     
 app = FastAPI()
 
@@ -26,10 +26,10 @@ app.add_middleware(
 )
     
 
-# @app.post("/enviar/preco")
-# async def main(precos: PropsPrecos):
-#     status = EnviarUltimoValor(precos)
-#     return {'status': status}
+@app.post("/enviar/preco")
+async def main(precos: PropsPrecos):
+    status = db.EnviarUltimoValor(precos)
+    return {'status': status}
 
 
 
