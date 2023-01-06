@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from conexao import PegarUltimoValor,EnviarUltimoValor
+from api.conexao import PegarUltimoValor,EnviarUltimoValor
 
 class PropsPrecos(BaseModel):
     dolarParaReal: float
