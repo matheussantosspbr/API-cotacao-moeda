@@ -4,10 +4,6 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from conexao import PegarUltimoValor, EnviarUltimoValor
 
-class Item(BaseModel):
-    name: str
-
-    
 class PropsPrecos(BaseModel):
     dolarParaReal: float
     realParaDolar: float
