@@ -1,6 +1,5 @@
 import mysql.connector
 from api.token import secret_token, public_token
-
 def conexao():
     con = mysql.connector.connect(host="sql184.main-hosting.eu", user="u115428721_matheusDevTech", password="1010vcvC@!", database="u115428721_DB_matheusTech") 
     return con
@@ -8,7 +7,7 @@ def conexao():
 def PegarUltimoValor():
     con = conexao()
     cur = con.cursor()
-    cur.execute("SELECT * FROM precos ORDER BY created_date DESC LIMIT 1")
+    cur.execute("SELECT * FROM precos WHERE id = 1")
     res = cur.fetchall()
     cur.close()
     con.commit()
@@ -26,8 +25,11 @@ def EnviarUltimoValor(data):
         euroParaDolar = data.precos['euroParaDolar'] * 100000
         dolarParaEuro = data.precos['dolarParaEuro'] * 100000
 
-        query = """INSERT INTO precos (USD_BRL, BRL_USD, EUR_BRL, BRL_EUR, EUR_USD, USD_EUR) VALUES('%i','%i','%i','%i','%i','%i' )""" % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro)
-        print(query)
+        query = """
+            UPDATE precos
+            SET USD_BRL = '%i', BRL_USD = '%i', EUR_BRL = '%i', BRL_EUR = '%i', EUR_USD = '%i', USD_EUR = '%i'
+            WHERE id = 1;
+        """ % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro)
             
         try:
             cur.execute(query)
