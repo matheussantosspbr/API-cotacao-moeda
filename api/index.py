@@ -38,5 +38,5 @@ async def home():
         "BRL_EUR":precos[0][4]  / 100000,
         "EUR_USD":precos[0][5] / 100000,
         "USD_EUR":precos[0][6] / 100000,
-        "updated_at": precos[0][7].replace('T', ' ')
+        "updated_at": str(precos[0][7]).replace('T', ' ')
     }
