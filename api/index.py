@@ -32,10 +32,11 @@ async def main(require: require):
 async def home():
     precos = PegarUltimoValor()
     return {
-        "dolarParaReal":precos[0][1] / 100000,
-        "realParaDolar":precos[0][2] / 100000,
-        "euroParaReal":precos[0][3]  / 100000,
-        "realParaEuro":precos[0][4]  / 100000,
-        "euroParaDolar":precos[0][5] / 100000,
-        "dolarParaEuro":precos[0][6] / 100000
+        "USD_BRL":precos[0][1] / 100000,
+        "BRL_USD":precos[0][2] / 100000,
+        "EUR_BRL":precos[0][3]  / 100000,
+        "BRL_EUR":precos[0][4]  / 100000,
+        "EUR_USD":precos[0][5] / 100000,
+        "USD_EUR":precos[0][6] / 100000,
+        "updated_at": precos[0][7]
     }
