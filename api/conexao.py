@@ -39,9 +39,9 @@ def EnviarUltimoValor(data):
         
         query = """
             UPDATE precos
-            SET USD_BRL = '%i', BRL_USD = '%i', EUR_BRL = '%i', BRL_EUR = '%i', EUR_USD = '%i', USD_EUR = '%i', timestamp = '%i', updated_at = '%s'
+            SET USD_BRL = '%i', BRL_USD = '%i', EUR_BRL = '%i', BRL_EUR = '%i', EUR_USD = '%i', USD_EUR = '%i', timestamp = '%i'
             WHERE id = 1;
-        """ % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro, int(timestamp_padrão),str(myData_hora_formatada),)
+        """ % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro, int(timestamp_padrão))
             
         try:
             cur.execute(query)
