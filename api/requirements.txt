@@ -3,3 +3,4 @@ conexao
 mysql.connector
 pydantic
 token
+pytz

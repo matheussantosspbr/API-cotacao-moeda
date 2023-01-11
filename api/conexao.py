@@ -1,7 +1,7 @@
 import mysql.connector
 from api.token import secret_token, public_token
 import pytz
-from datetime import datetime, timezone
+from datetime import datetime
 
 myTimezone = pytz.timezone('America/Sao_Paulo')
 
