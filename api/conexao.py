@@ -1,9 +1,6 @@
 import mysql.connector
 from api.token import secret_token, public_token
-import pytz
 from datetime import datetime
-
-myTimezone = pytz.timezone('America/Sao_Paulo')
 
 def conexao():
     con = mysql.connector.connect(host="sql184.main-hosting.eu", user="u115428721_matheusDevTech", password="1010vcvC@!", database="u115428721_DB_matheusTech") 
@@ -33,9 +30,6 @@ def EnviarUltimoValor(data):
         # Timestamp
         data_hora_padrão = datetime.now()
         timestamp_padrão = datetime.timestamp(data_hora_padrão)
-        myData_hora = datetime.now(myTimezone)
-        myTimestamp = datetime.timestamp(myData_hora)
-        myData_hora_formatada = datetime.utcfromtimestamp(int(myTimestamp)).strftime('%d/%m/%Y %H:%m:%S')
         
         query = """
             UPDATE precos
