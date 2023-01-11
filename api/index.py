@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 # from conexao import PegarUltimoValor,EnviarUltimoValor
 from api.conexao import PegarUltimoValor,EnviarUltimoValor
+from datetime import datetime, timezone
 
 class require(BaseModel):
     secret_token: str
@@ -31,6 +32,7 @@ async def main(require: require):
 @app.get("/")
 async def home():
     precos = PegarUltimoValor()
+    timeStamp = datetime.timestamp(precos[0][7])
     return {
         "USD_BRL":precos[0][1] / 100000,
         "BRL_USD":precos[0][2] / 100000,
@@ -38,6 +40,5 @@ async def home():
         "BRL_EUR":precos[0][4]  / 100000,
         "EUR_USD":precos[0][5] / 100000,
         "USD_EUR":precos[0][6] / 100000,
-        #"updated_at": str(precos[0][7]).replace('T', ' ')
-        "updated_at": type(precos[0][7])
+        "updated_at": datetime.fromtimestamp(timeStamp).strftime('%d/%m/%Y %H:%M:%S')
     }
