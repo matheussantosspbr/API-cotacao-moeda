@@ -33,7 +33,7 @@ async def main(require: require):
 @app.get("/")
 async def home():
     precos = PegarUltimoValor()
-    myDatetime = datetime.fromtimestamp(int(precos[0][7]))
+    myDatetime = datetime.fromtimestamp(int(precos[0][7])).strftime('%d/%m/%Y %H:%M:%S')
     return {
         "USD_BRL":precos[0][1] / 100000,
         "BRL_USD":precos[0][2] / 100000,
