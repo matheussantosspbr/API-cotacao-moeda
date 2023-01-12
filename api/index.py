@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # from conexao import PegarUltimoValor,EnviarUltimoValor
 from api.conexao import PegarUltimoValor,EnviarUltimoValor
 from datetime import datetime
-import pytz
+from pytz import timezone
 
 
 class require(BaseModel):
@@ -35,8 +35,7 @@ async def main(require: require):
 async def home():
     precos = PegarUltimoValor()
     timestamp = datetime.fromtimestamp(int(precos[0][7]))
-    myTimezone = pytz.timezone('America/Sao_Paulo')
-    myDatetime = datetime.fromtimestamp(timestamp,myTimezone).strftime('%d/%m/%Y %H:%M:%S')
+    myDatetime = datetime.fromtimestamp(timestamp, tz = timezone('America/Sao_Paulo')).strftime('%d/%m/%Y %H:%M:%S') 
     return {
         "USD_BRL":precos[0][1] / 100000,
         "BRL_USD":precos[0][2] / 100000,
