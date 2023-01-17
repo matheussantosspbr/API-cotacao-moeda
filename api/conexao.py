@@ -9,7 +9,7 @@ def conexao():
 def PegarUltimoValor():
     con = conexao()
     cur = con.cursor()
-    cur.execute("SELECT * FROM precos WHERE id = 1")
+    cur.execute("SELECT * FROM precos ORDER BY id DESC LIMIT 1")
     res = cur.fetchall()
     cur.close()
     con.commit()
