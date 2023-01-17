@@ -2,7 +2,7 @@ from datetime import datetime
 from api.model.key.token import secret_token, public_token
 from api.model.db.conexao import conexao
 
-def postIndex(data):
+def post_Index(data):
     if data.secret_token == secret_token and data.public_token == public_token:
         con = conexao()
         cur = con.cursor()
