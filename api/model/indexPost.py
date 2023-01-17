@@ -1,22 +1,8 @@
-import mysql.connector
-from api.token import secret_token, public_token
 from datetime import datetime
+from api.model.key.token import secret_token, public_token
+from api.model.db.conexao import conexao
 
-def conexao():
-    con = mysql.connector.connect(host="sql184.main-hosting.eu", user="u115428721_matheusDevTech", password="1010vcvC@!", database="u115428721_DB_matheusTech") 
-    return con
-
-def PegarUltimoValor():
-    con = conexao()
-    cur = con.cursor()
-    cur.execute("SELECT * FROM precos WHERE id = 1")
-    res = cur.fetchall()
-    cur.close()
-    con.commit()
-    con.close()
-    return res
-
-def EnviarUltimoValor(data):
+def indexPost(data):
     if data.secret_token == secret_token and data.public_token == public_token:
         con = conexao()
         cur = con.cursor()
