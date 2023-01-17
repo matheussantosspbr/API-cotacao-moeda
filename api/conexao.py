@@ -31,12 +31,10 @@ def EnviarUltimoValor(data):
         data_hora_padrão = datetime.now()
         timestamp_padrão = datetime.timestamp(data_hora_padrão)
         
-        query = """
-            UPDATE precos
-            SET USD_BRL = '%i', BRL_USD = '%i', EUR_BRL = '%i', BRL_EUR = '%i', EUR_USD = '%i', USD_EUR = '%i', timestamp = '%i'
-            WHERE id = 1;
-        """ % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro, int(timestamp_padrão))
-            
+        query = """INSERT INTO precos
+                        (USD_BRL, BRL_USD, EUR_BRL, BRL_EUR, EUR_USD, USD_EUR, timestamp)
+                   VALUES
+                        ('%i','%i','%i','%i','%i','%i', '%i' )""" % (dolarParaReal,realParaDolar, euroParaReal, realParaEuro, euroParaDolar, dolarParaEuro, int(timestamp_padrão))
         try:
             cur.execute(query)
             cur.close()
