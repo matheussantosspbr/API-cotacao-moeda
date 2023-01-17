@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from api.controller.controller import getMinuto, indexPost
+from api.controller.controller import getMinuto, postIndex
 
 
 class postDado(BaseModel):
@@ -36,7 +36,7 @@ async def now():
 
 @app.post("/post/preco/agora")
 async def indexPost(postDado: postDado):
-    return indexPost(postDado)
+    return postIndex(postDado)
 
 
 

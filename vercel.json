@@ -1,5 +1,5 @@
 {
   "routes": [
       { "src": "/agora", "dest": "api/index.py" },
-      { "src": "/POST/preco/agora", "dest": "api/index.py" }]
+      { "src": "/post/preco/agora", "dest": "api/index.py" }]
 }

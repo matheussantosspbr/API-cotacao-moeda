@@ -4,12 +4,12 @@ from pytz import timezone
 
 # MODELS
 from api.model.getDados import MD_getMinuto
-from api.model.indexPost import indexPost
+from api.model.postIndex import postIndex
 
 # ============================= POST =============================
 
-def indexPost(dados):
-    response = indexPost(dados)
+def postIndex(dados):
+    response = postIndex(dados)
     return {'status': response}
 
 # ============================= GET =============================
