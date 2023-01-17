@@ -1,5 +1,5 @@
 {
   "routes": [
-      { "src": "/", "dest": "api/index.py" },
-      { "src": "/enviar/preco", "dest": "api/index.py" }]
+      { "src": "/agora", "dest": "api/index.py" },
+      { "src": "/POST/preco/agora", "dest": "api/index.py" }]
 }
