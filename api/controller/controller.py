@@ -3,7 +3,7 @@ from datetime import datetime
 from pytz import timezone
 
 # MODELS
-from api.model.getDados import getMinuto
+from api.model.getDados import MD_getMinuto
 from api.model.indexPost import indexPost
 
 # ============================= POST =============================
@@ -15,7 +15,7 @@ def indexPost(dados):
 # ============================= GET =============================
 
 def getMinuto():
-    precos = getMinuto()
+    precos = MD_getMinuto()
     timestamp = int(precos[0][7])
     myDatetime = datetime.fromtimestamp(timestamp, tz = timezone('America/Sao_Paulo')).strftime('%d/%m/%Y %H:%M:%S') 
     return {
