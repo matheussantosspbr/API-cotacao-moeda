@@ -34,7 +34,7 @@ async def now():
 
 # ======================= POST =======================
 
-@app.post("/POST/preco/agora")
+@app.post("/post/preco/agora")
 async def indexPost(postDado: postDado):
     return indexPost(postDado)
 
