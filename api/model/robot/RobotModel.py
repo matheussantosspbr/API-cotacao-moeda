@@ -29,7 +29,7 @@ def SelectHour():
     con.close()
     
     insert = InsertHour(response)
-    if insert['status'] == 200:
+    if insert['status'] == 201:
         DeleteHour()
     else:
         return insert
