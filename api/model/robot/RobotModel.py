@@ -29,22 +29,20 @@ def SelectHour():
     con.close()
     
     insert = InsertHour(response)
-    return insert
     if insert.status == 200:
         DeleteHour()
     else:
         return insert
 
 def InsertHour(dado):
-    return dado
     con = conexao()
     cur = con.cursor()
-    dolarParaReal = dado[0][1]
-    realParaDolar = dado[0][2]
-    euroParaReal = dado[0][3]
-    realParaEuro = dado[0][4]
-    euroParaDolar = dado[0][5]
-    dolarParaEuro = dado[0][6]
+    dolarParaReal = dado[0][0]
+    realParaDolar = dado[0][1]
+    euroParaReal = dado[0][2]
+    realParaEuro = dado[0][3]
+    euroParaDolar = dado[0][4]
+    dolarParaEuro = dado[0][5]
 
     # Timestamp
     data_hora_padrão = datetime.now()
