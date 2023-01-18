@@ -3,19 +3,40 @@ from datetime import datetime
 from pytz import timezone
 
 # MODELS
-from api.model.getDados import MD_getMinuto
+from api.model.getDados import MD_getNow
 from api.model.post_Index import post_Index
 
-# ============================= POST =============================
+# ARQUIVOS
+from api.controller.RobotController import RobotHour
+from api.auth.validacao import validar
+
+# ============================= ROBOT ===========================
+
+def RobotHourController(token):
+    token = [ token.secret_token, token.public_token]
+    res = validar(token)
+    
+    if res.status == 200 and res.message == 'ok':
+        return RobotHour(token)
+    else:
+        return res
+
+# ============================= POST ============================
 
 def postIndex(dados):
-    response = post_Index(dados)
-    return {'status': response}
+    token = [ dados.secret_token, dados.public_token]
+    res = validar(token)
+    
+    if res.status == 200 and res.message == 'ok':
+        return post_Index(dados)
+    else:
+        return res
+    
 
 # ============================= GET =============================
 
-def getMinuto():
-    precos = MD_getMinuto()
+def getNow():
+    precos = MD_getNow()
     timestamp = int(precos[0][7])
     myDatetime = datetime.fromtimestamp(timestamp, tz = timezone('America/Sao_Paulo')).strftime('%d/%m/%Y %H:%M:%S') 
     return {

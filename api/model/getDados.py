@@ -1,6 +1,6 @@
 from api.model.db.conexao import conexao
 
-def MD_getMinuto():
+def MD_getNow():
     con = conexao()
     cur = con.cursor()
     cur.execute("SELECT * FROM precos ORDER BY id DESC LIMIT 1")

@@ -2,7 +2,9 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from api.controller.controller import getMinuto, postIndex
+from api.controller.controller import getNow, postIndex
+from api.controller.controller import RobotHourController
+
 
 
 class postDado(BaseModel):
@@ -10,14 +12,22 @@ class postDado(BaseModel):
     public_token: str
     precos: dict
     
+class token(BaseModel):
+    secret_token: str
+    public_token: str
+    
 app = FastAPI()
+
+origins = [
+    "https://precohoje.info"
+]
 
 app.add_middleware(
     CORSMiddleware,
     allow_methods=['*'],
     allow_headers=['*'],
     allow_credentials=True,
-    allow_origins=['*'],
+    allow_origins=origins,
 )
     
 # ======================= INDEX =======================
@@ -26,11 +36,17 @@ app.add_middleware(
 async def index():
     return ''
 
+# ======================= ROBOT =======================
+
+@app.put("/bot/hour/active")
+async def RobotHour(token: token):
+    return RobotHourController(token)
+
 # ======================= GET =======================
 
 @app.get("/agora")
 async def now():
-    return getMinuto()
+    return getNow()
 
 # ======================= POST =======================
 
