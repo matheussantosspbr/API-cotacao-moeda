@@ -37,12 +37,12 @@ def SelectHour():
 def InsertHour(dado):
     con = conexao()
     cur = con.cursor()
-    dolarParaReal = round((dado[0][0] / 100000), 2) * 100000
-    realParaDolar = round((dado[0][1] / 100000), 2) * 100000
-    euroParaReal = round((dado[0][2] / 100000), 2) * 100000
-    realParaEuro = round((dado[0][3] / 100000), 2) * 100000
-    euroParaDolar = round((dado[0][4] / 100000), 2) * 100000
-    dolarParaEuro = round((dado[0][5] / 100000), 2) * 100000
+    dolarParaReal = int(round((dado[0][0] / 100000), 2) * 100000)
+    realParaDolar = int(round((dado[0][1] / 100000), 2) * 100000)
+    euroParaReal =  int(round((dado[0][2] / 100000), 2) * 100000)
+    realParaEuro =  int(round((dado[0][3] / 100000), 2) * 100000)
+    euroParaDolar = int(round((dado[0][4] / 100000), 2) * 100000)
+    dolarParaEuro = int(round((dado[0][5] / 100000), 2) * 100000)
     
     # Timestamp
     data_hora_padrão = datetime.now()
@@ -72,7 +72,7 @@ def InsertHour(dado):
         }
 
 def DeleteHour():
-    query = "DELETE FROM precos WHERE HOUR(FROM_UNIXTIME(timestamp)) = HOUR(DATE_SUB(NOW(), INTERVAL 1 HOUR));"
+    query = "DELETE FROM precos WHERE HOUR(FROM_UNIXTIME(timestamp)) = HOUR(DATE_SUB(NOW(), INTERVAL 2 HOUR));"
     
     con = conexao()
     cur = con.cursor()
