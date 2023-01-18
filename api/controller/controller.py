@@ -16,7 +16,7 @@ def RobotHourController(token):
     token = [ token.secret_token, token.public_token]
     res = validar(token)
     
-    if res.status == 200 and res.message == 'ok':
+    if res['status'] == 200 and res['message'] == 'ok':
         return RobotHour(token)
     else:
         return res
@@ -27,7 +27,7 @@ def postIndex(dados):
     token = [ dados.secret_token, dados.public_token]
     res = validar(token)
     
-    if res.status == 200 and res.message == 'ok':
+    if res['status'] == 200 and res['message'] == 'ok':
         return post_Index(dados)
     else:
         return res
