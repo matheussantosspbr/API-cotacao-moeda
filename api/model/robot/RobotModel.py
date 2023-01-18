@@ -73,7 +73,7 @@ def InsertHour(dado):
         }
 
 def DeleteHour():
-    query = "DELETE FROM preco WHERE HOUR(FROM_UNIXTIME(timestamp)) = HOUR(DATE_SUB(NOW(), INTERVAL 1 HOUR));"
+    query = "DELETE FROM precos WHERE HOUR(FROM_UNIXTIME(timestamp)) = HOUR(DATE_SUB(NOW(), INTERVAL 1 HOUR));"
     
     con = conexao()
     cur = con.cursor()
