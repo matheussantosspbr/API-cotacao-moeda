@@ -37,13 +37,13 @@ def SelectHour():
 def InsertHour(dado):
     con = conexao()
     cur = con.cursor()
-    dolarParaReal = dado[0][0]
-    realParaDolar = dado[0][1]
-    euroParaReal = dado[0][2]
-    realParaEuro = dado[0][3]
-    euroParaDolar = dado[0][4]
-    dolarParaEuro = dado[0][5]
-
+    dolarParaReal = round((dado[0][0] / 100000), 2) * 100000
+    realParaDolar = round((dado[0][1] / 100000), 2) * 100000
+    euroParaReal = round((dado[0][2] / 100000), 2) * 100000
+    realParaEuro = round((dado[0][3] / 100000), 2) * 100000
+    euroParaDolar = round((dado[0][4] / 100000), 2) * 100000
+    dolarParaEuro = round((dado[0][5] / 100000), 2) * 100000
+    
     # Timestamp
     data_hora_padrão = datetime.now()
     timestamp_padrão = datetime.timestamp(data_hora_padrão)
