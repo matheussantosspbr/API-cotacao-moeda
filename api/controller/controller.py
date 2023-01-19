@@ -63,9 +63,6 @@ def getDay():
             "EUR_USD": preco[5] / 100000,
             "USD_EUR": preco[6] / 100000,
             "timestamp":preco[7]
-            }
-        )
+            })
     json_str = json.dumps(dados)
-    return {
-        json.loads(json_str)
-    }
+    return json.loads(json_str)
