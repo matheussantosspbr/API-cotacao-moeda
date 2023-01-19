@@ -18,7 +18,8 @@ class token(BaseModel):
 app = FastAPI()
 
 origins = [
-    "https://precohoje.info"
+    "https://precohoje.info",
+    "http://localhost:5173"
 ]
 
 app.add_middleware(
