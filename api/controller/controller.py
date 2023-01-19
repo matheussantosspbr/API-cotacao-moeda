@@ -55,7 +55,7 @@ def getDay():
     precos = MD_getDay()
     dados = []
     for preco in precos:
-        timestamp = int(precos[7])
+        timestamp = int(preco[7])
         myDatetime = datetime.fromtimestamp(timestamp, tz = timezone('America/Sao_Paulo')).strftime('%d/%m/%Y %H:%M:%S') 
         dados.append({
             "USD_BRL": preco[1] / 100000,
