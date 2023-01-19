@@ -29,12 +29,19 @@ def SelectHour():
     con.close()
     
     insert = InsertHour(response)
+    return insert
     if insert['status'] == 201:
         DeleteHour()
     else:
         return insert
 
 def InsertHour(dado):
+    return {
+        '0': dado,
+        '1':dado[0],
+        '2':dado[0][0],
+        '3':dado[0][0] / 100000
+    }
     con = conexao()
     cur = con.cursor()
     dolarParaReal = int(dado[0][0] / 100000)
