@@ -17,17 +17,13 @@ class token(BaseModel):
     
 app = FastAPI()
 
-origins = [
-    "https://precohoje.info",
-    "http://localhost:5173"
-]
-
 app.add_middleware(
     CORSMiddleware,
     allow_methods=['*'],
     allow_headers=['*'],
     allow_credentials=True,
-    allow_origins=origins,
+    allow_origins=['https://precohoje.info', 'http://localhost:5173'],
+
 )
     
 # ======================= INDEX =======================
