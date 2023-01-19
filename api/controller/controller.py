@@ -1,6 +1,7 @@
 # BIBLIOTECAS
 from datetime import datetime
 from pytz import timezone
+import json
 
 # MODELS
 from api.model.getDados import MD_getNow, MD_getDay
@@ -66,4 +67,4 @@ def getDay():
             "timestamp":preco[7]
             }
         )
-    return dados[0]
+    return json.dumps(dados)
