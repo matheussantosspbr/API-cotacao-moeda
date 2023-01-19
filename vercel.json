@@ -1,6 +1,8 @@
 {
   "routes": [
       { "src": "/agora", "dest": "api/index.py" },
+      { "src": "/dia", "dest": "api/index.py" },
       { "src": "/post/preco/agora", "dest": "api/index.py" },
-      { "src": "/bot/hour/active", "dest": "api/index.py" }]
+      { "src": "/bot/hour/active", "dest": "api/index.py" }
+    ]
 }

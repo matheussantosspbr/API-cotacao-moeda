@@ -3,7 +3,7 @@ from datetime import datetime
 from pytz import timezone
 
 # MODELS
-from api.model.getDados import MD_getNow
+from api.model.getDados import MD_getNow, MD_getDay
 from api.model.post_Index import post_Index
 
 # ARQUIVOS
@@ -49,3 +49,21 @@ def getNow():
         "timestamp":precos[0][7],
         "updated_at" : myDatetime
     }
+
+def getDay():
+    precos = MD_getDay()
+    dados = []
+    
+    precos = MD_getDay()
+    for preco in precos:
+        dados.append({
+            "USD_BRL": preco[1] / 100000,
+            "BRL_USD": preco[2] / 100000,
+            "EUR_BRL": preco[3] / 100000,
+            "BRL_EUR": preco[4] / 100000,
+            "EUR_USD": preco[5] / 100000,
+            "USD_EUR": preco[6] / 100000,
+            "timestamp":preco[7]
+            }
+        )
+    return dados[0]

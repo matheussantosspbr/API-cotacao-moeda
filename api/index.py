@@ -2,8 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from api.controller.controller import getNow, postIndex
-from api.controller.controller import RobotHourController
+from api.controller.controller import getNow, postIndex, RobotHourController, getDay
 
 
 
@@ -47,6 +46,10 @@ async def RobotHour(token: token):
 @app.get("/agora")
 async def now():
     return getNow()
+
+@app.get('/dia')
+async def day():
+    return getDay()
 
 # ======================= POST =======================
 
