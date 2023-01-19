@@ -54,10 +54,8 @@ def getNow():
 def getDay():
     precos = MD_getDay()
     dados = {}
-    
-    precos = MD_getDay()
     for preco in precos:
-        dados.append({
+        dados.update({
             "USD_BRL": preco[1] / 100000,
             "BRL_USD": preco[2] / 100000,
             "EUR_BRL": preco[3] / 100000,
@@ -68,4 +66,6 @@ def getDay():
             }
         )
     json_str = json.dumps(dados)
-    return json.loads(json_str)
+    return {
+        json.loads(json_str)
+    }
