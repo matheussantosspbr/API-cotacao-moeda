@@ -29,7 +29,6 @@ def SelectHour():
     con.close()
     
     insert = InsertHour(response)
-    return insert
     if insert['status'] == 201:
         DeleteHour()
     else:
@@ -74,7 +73,7 @@ def InsertHour(dado):
 
 def DeleteHour():
     query = "DELETE FROM precos WHERE HOUR(FROM_UNIXTIME(timestamp)) = HOUR(DATE_SUB(NOW(), INTERVAL 2 HOUR));"
-    
+
     con = conexao()
     cur = con.cursor()
     cur.execute(query)
