@@ -67,5 +67,5 @@ def getDay():
             "timestamp":preco[7]
             }
         )
-    json_str = json.dumps(dados)
+    json_str = (json.dumps(dados).replace("[", '{')).replace("]", '}')
     return json.loads(json_str)
