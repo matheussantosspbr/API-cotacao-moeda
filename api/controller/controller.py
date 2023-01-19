@@ -55,6 +55,8 @@ def getDay():
     precos = MD_getDay()
     dados = []
     for preco in precos:
+        timestamp = int(precos[7])
+        myDatetime = datetime.fromtimestamp(timestamp, tz = timezone('America/Sao_Paulo')).strftime('%d/%m/%Y %H:%M:%S') 
         dados.append({
             "USD_BRL": preco[1] / 100000,
             "BRL_USD": preco[2] / 100000,
@@ -62,7 +64,8 @@ def getDay():
             "BRL_EUR": preco[4] / 100000,
             "EUR_USD": preco[5] / 100000,
             "USD_EUR": preco[6] / 100000,
-            "timestamp":preco[7]
+            "timestamp":preco[7],
+            "updated_at" : myDatetime
             })
     json_str = json.dumps(dados)
     return json.loads(json_str)
