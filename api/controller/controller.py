@@ -53,7 +53,7 @@ def getNow():
 
 def getDay():
     precos = MD_getDay()
-    dados = []
+    dados = {}
     
     precos = MD_getDay()
     for preco in precos:
@@ -67,5 +67,5 @@ def getDay():
             "timestamp":preco[7]
             }
         )
-    json_str = (json.dumps(dados).replace("[", '{')).replace("]", '}')
+    json_str = json.dumps(dados)
     return json.loads(json_str)
