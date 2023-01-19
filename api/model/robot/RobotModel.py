@@ -36,20 +36,14 @@ def SelectHour():
         return insert
 
 def InsertHour(dado):
-    return {
-        '0': dado,
-        '1':dado[0],
-        '2':dado[0][0],
-        '3':dado[0][0] / 100000
-    }
     con = conexao()
     cur = con.cursor()
-    dolarParaReal = int(dado[0][0] / 100000)
-    realParaDolar = int(dado[0][1] / 100000)
-    euroParaReal =  int(dado[0][2] / 100000)
-    realParaEuro =  int(dado[0][3] / 100000)
-    euroParaDolar = int(dado[0][4] / 100000)
-    dolarParaEuro = int(dado[0][5] / 100000)
+    dolarParaReal = int(dado[0][0])
+    realParaDolar = int(dado[0][1])
+    euroParaReal =  int(dado[0][2])
+    realParaEuro =  int(dado[0][3])
+    euroParaDolar = int(dado[0][4])
+    dolarParaEuro = int(dado[0][5])
     
     # Timestamp
     data_hora_padrão = datetime.now()
