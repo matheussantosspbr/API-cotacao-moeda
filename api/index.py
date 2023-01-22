@@ -22,7 +22,7 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
     allow_credentials=True,
-    allow_origins=['https://precohoje.info', 'http://localhost:5173', 'https://precohoje.matheussantos.tech'],
+    allow_origins=['https://precohoje.info', 'http://localhost:5173'],
 
 )
     
